@@ -158,7 +158,7 @@ post_makeinstall_target() {
   rm -rf $INSTALL/usr/lib/systemd/system/container-getty@.service
   rm -rf $INSTALL/usr/lib/systemd/system/getty.target
   rm -rf $INSTALL/usr/lib/systemd/system/getty@.service
-  rm -rf $INSTALL/usr/lib/systemd/system/serial-getty@.service
+  #rm -rf $INSTALL/usr/lib/systemd/system/serial-getty@.service
   rm -rf $INSTALL/usr/lib/systemd/system/*.target.wants/getty.target
 
   # remove other notused or nonsense stuff (our /etc is ro)

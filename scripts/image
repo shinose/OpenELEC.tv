@@ -19,7 +19,7 @@
 ################################################################################
 
 . config/options $1
-
+set -x
 show_config
 
 $SCRIPTS/checkdeps
@@ -99,7 +99,7 @@ fi
   echo -e "VERSION_ID=\"$OS_VERSION\"" >> $INSTALL/etc/os-release
   echo -e "PRETTY_NAME=\"$DISTRONAME ($([ "$OFFICIAL" = "yes" ] && echo "official" ||  echo "community")) - Version: $OPENELEC_VERSION\"" >> $INSTALL/etc/os-release
   echo -e "HOME_URL=\"http://www.openelec.tv\"" >> $INSTALL/etc/os-release
-  echo -e "BUG_REPORT_URL=\"https://github.com/OpenELEC/OpenELEC.tv\"" >> $INSTALL/etc/os-release
+  echo -e "BUG_REPORT_URL=\"https://github.com/shinose/Qplay\"" >> $INSTALL/etc/os-release
   if [ -n "$GIT_HASH" ]; then
     echo -e "BUILD_ID=\"$GIT_HASH\"" >> $INSTALL/etc/os-release
   fi
@@ -507,6 +507,11 @@ fi
       # copy additional files
         mkdir -p $RELEASE_DIR/${DISTRONAME}_${PROJECT}/System/licenses
           cp $ROOT/licenses/* $RELEASE_DIR/${DISTRONAME}_${PROJECT}/System/licenses
+
+	# copy script to create SD Card
+	if [ -f $ROOT/packages/tools/u-boot/files/create_sdcard ]; then
+		cp $ROOT/packages/tools/u-boot/files/create_sdcard  $TARGET_IMG/create_sdcard
+	fi
 
     # create Storage dir
       mkdir -p $RELEASE_DIR/${DISTRONAME}_${PROJECT}/Storage

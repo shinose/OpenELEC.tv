@@ -19,7 +19,7 @@
 ################################################################################
 
 . config/options $1
-
+set -x
 if [ -z "$1" ]; then
   echo "usage: $0 package_name[:<host|target|init|bootstrap>]"
   exit 1

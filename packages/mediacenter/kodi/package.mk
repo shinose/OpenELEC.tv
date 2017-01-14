@@ -37,10 +37,10 @@ case "$KODIPLAYER_DRIVER" in
     PKG_KEEP_CHECKOUT="no"
     ;;
   *)
-    PKG_VERSION="1dd8613"
-    PKG_GIT_URL="https://github.com/xbmc/xbmc.git"
-    PKG_GIT_BRANCH="Krypton"
-    PKG_KEEP_CHECKOUT="no"
+    PKG_VERSION="2cf1967"
+    PKG_GIT_URL="https://github.com/shinose/kodi-qplay.git"
+    PKG_GIT_BRANCH="master"
+    PKG_KEEP_CHECKOUT="yes"
     PKG_PATCH_DIRS="$LINUX"
     ;;
 esac
@@ -49,7 +49,7 @@ PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
 PKG_CMAKE_SCRIPT_HOST="tools/depends/native/JsonSchemaBuilder/CMakeLists.txt"
 PKG_CMAKE_SCRIPT_BOOTSTRAP="tools/depends/native/TexturePacker/CMakeLists.txt"
-PKG_CMAKE_SCRIPT_TARGET="project/cmake/CMakeLists.txt"
+PKG_CMAKE_SCRIPT_TARGET="CMakeLists.txt"
 PKG_PYTHON_VERSION="2.7"
 
 # configure GPU drivers and dependencies:
@@ -213,7 +213,7 @@ if [ ! "$KODIPLAYER_DRIVER" = default ]; then
   if [ "$KODIPLAYER_DRIVER" = bcm2835-firmware ]; then
     PKG_CMAKE_OPTS_TARGET+=" -DENABLE_MMAL=ON -DCORE_SYSTEM_NAME=rbpi"
   elif [ "$KODIPLAYER_DRIVER" = libfslvpuwrap ]; then
-    PKG_CMAKE_OPTS_TARGET+=" -DENABLE_IMXVPU=ON"
+    PKG_CMAKE_OPTS_TARGET+=" -DENABLE_IMX=ON"
     strip_lto # fails to build with LTO support (todo)
   elif [ "$KODIPLAYER_DRIVER" = libamcodec ]; then
     PKG_CMAKE_OPTS_TARGET+=" -DENABLE_AML=ON"

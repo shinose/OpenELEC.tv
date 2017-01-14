@@ -73,7 +73,8 @@ PKG_CONFIGURE_OPTS_TARGET="--sbindir=/sbin \
                            --enable-libsmartcols \
                            --enable-losetup \
                            --enable-fsck \
-                           --enable-blkid"
+                           --enable-blkid \
+                           --enable-agetty"
 
 if [ "$SWAP_SUPPORT" = "yes" ]; then
   PKG_CONFIGURE_OPTS_TARGET+=" --enable-swapon"
@@ -101,6 +102,8 @@ if [ "$INITRAMFS_PARTED_SUPPORT" = "yes" ]; then
 fi
 
 post_makeinstall_target() {
+  mkdir -p $INSTALL/sbin
+  cp agetty $INSTALL/sbin
   if [ "$SWAP_SUPPORT" = "yes" ]; then
     mkdir -p $INSTALL/usr/lib/openelec
       cp -PR $PKG_DIR/scripts/mount-swap $INSTALL/usr/lib/openelec
