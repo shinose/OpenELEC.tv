@@ -235,10 +235,9 @@ echo "#########################################################"
 
 # install u-boot image, u-boot.imx if new u-boot. else SPL
   echo "installing the bootloader..."
-  if [ -e "3rdparty/bootloader/u-boot.imx" ] ;then
-    dd if=3rdparty/bootloader/u-boot.imx of="$DISK" bs=1k seek=1 conv=fsync
-  elif [ -e "3rdparty/bootloader/SPL" ];then
-    dd if=3rdparty/bootloader/SPL of="$DISK" bs=1k seek=1 conv=fsync
+  if [ -e "3rdparty/bootloader/SPL-cuboxi" ] && [ -e "3rdparty/bootloader/u-boot-cuboxi.img" ];then
+    dd if=3rdparty/bootloader/SPL-cuboxi of="$DISK" bs=1k seek=1 conv=fsync
+    cp 3rdparty/bootloader/u-boot-cuboxi.img $MOUNTPOINT/u-boot.img
   else
      echo "ERROR: no bootloader image found!! please execute in archive folder"
   fi
@@ -248,7 +247,6 @@ echo "#########################################################"
   cp target/KERNEL $MOUNTPOINT
   cp target/SYSTEM $MOUNTPOINT
   cp 3rdparty/bootloader/* $MOUNTPOINT
-  cp openelec.ico $MOUNTPOINT
   cp README.md $MOUNTPOINT
 
 # sync disk
