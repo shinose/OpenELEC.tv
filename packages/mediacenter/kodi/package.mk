@@ -37,7 +37,7 @@ case "$KODIPLAYER_DRIVER" in
     PKG_KEEP_CHECKOUT="no"
     ;;
   *)
-    PKG_VERSION="1d0c77d"
+    PKG_VERSION="f0e956d"
     PKG_GIT_URL="https://github.com/shinose/kodi-qplay.git"
     PKG_GIT_BRANCH="master"
     PKG_KEEP_CHECKOUT="yes"
